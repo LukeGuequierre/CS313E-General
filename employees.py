@@ -48,14 +48,14 @@ class Employee(ABC):
             self._salary = salary
         else:
             raise ValueError
-    
+
     @property
     def salary(self):
         """
         Returns hidden variable "salary"
         """
         return self._salary
-    
+
     @salary.setter
     def salary(self, new):
         """
@@ -65,7 +65,7 @@ class Employee(ABC):
             self._salary = new
         else:
             raise ValueError
-    
+
     @property
     def performance(self):
         """
@@ -208,8 +208,9 @@ class TemporaryEmployee(Employee):
         """
         super().interact(other)
         if isinstance(other, Manager):
-            if other.happiness >= HAPPINESS_THRESHOLD and self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
-                self.savings += MANAGER_BONUS
+            if other.happiness >= HAPPINESS_THRESHOLD:
+                if self.performance >= TEMP_EMPLOYEE_PERFORMANCE_THRESHOLD:
+                    self.savings += MANAGER_BONUS
             elif other.happiness < HAPPINESS_THRESHOLD:
                 self.salary = self.salary // 2
                 if self.happiness - 5 >= 0:
@@ -220,7 +221,6 @@ class TemporaryEmployee(Employee):
                     self.is_employed = False
 
 
-# TODO: implement this class. You may delete this comment when you are done.
 class PermanentEmployee(Employee):
     """
     A subclass of Employee representing a permanent employee.
@@ -246,8 +246,9 @@ class PermanentEmployee(Employee):
         """
         super().interact(other)
         if isinstance(other, Manager):
-            if other.happiness >= HAPPINESS_THRESHOLD and self.performance >= PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
-                self.savings += MANAGER_BONUS
+            if other.happiness >= HAPPINESS_THRESHOLD:
+                if self.performance >= PERM_EMPLOYEE_PERFORMANCE_THRESHOLD:
+                    self.savings += MANAGER_BONUS
             elif other.happiness < HAPPINESS_THRESHOLD:
                 if self.happiness - 1 >= 0:
                     self.happiness -= 1
