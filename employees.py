@@ -150,7 +150,7 @@ class Employee(ABC):
         self.savings -= DAILY_EXPENSE
 
     def __str__(self):
-        return(f'{self.__name}\n\tSalary: ${self._salary}\n\tSavings: ${self.savings}\n\tHappiness: {self.happiness}%\n\tPerformance: {self.performance}%')
+        return f'{self.__name}\n\tSalary: ${self._salary}\n\tSavings: ${self.savings}\n\tHappiness: {self.happiness}%\n\tPerformance: {self.performance}%'
 
 
 class Manager(Employee):
