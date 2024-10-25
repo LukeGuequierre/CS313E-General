@@ -1,19 +1,64 @@
-def c(nums):
-    result = []
-    temp = []
-    c_helper(nums, result, temp)
-    return result
-    
-def c_helper(nums, result, temp):
-    if len(temp) == len(nums):
-        result.append(temp[:])
-        return
+# the following code was modified from pythonds3 reading
+# 3.21. Implementing an Unordered List: Linked Lists
+
+class Node:
+    """A node of a linked list"""
+    def __init__(self, node_data, next=None):
+        self.data = node_data
+        self.next = next
+
+    def __str__(self):
+        return str(self.data)
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
         
-    for j in range(len(nums)):
-        if nums[j] not in temp:
-            temp.append(nums[j])
-            c_helper(nums, result, temp)
-            temp.pop(len(temp) - 1)
-            
-output = c([1, 2, 3, 4])
-print(len(output))
+    def add(self, item):
+        temp = Node(item)
+        if self.head is None:
+            self.head = temp
+            return
+        temp.next = self.head
+        self.head = temp
+
+    # TODO: implement this method        
+    def move_end_to_start(self):
+        if self.head is None:
+            return
+        if self.head.next is None:
+            return
+        super_previous = None
+        previous = self.head
+        current = self.head.next
+        if current.next is not None:
+            super_previous = self.head
+            previous = previous.next
+            current = current.next
+        else:
+            previous.next = None
+            current.next = previous
+            self.head = current
+        while current is not None:
+            super_previous = super_previous.next
+            previous = previous.next
+            current = current.next
+        super_previous.next = None
+        previous.next = self.head
+        self.head = previous
+    
+    def __str__(self):
+        nodes_str = []
+        current = self.head
+        while current is not None:
+            nodes_str.append(str(current))
+            current = current.next
+        nodes_str.append("None")
+        return " -> ".join(nodes_str)
+
+linked = LinkedList()
+for i in range(10):
+    linked.add(i)
+print(linked)
+linked.move_end_to_start()
+print(linked)
