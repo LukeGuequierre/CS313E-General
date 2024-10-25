@@ -194,13 +194,11 @@ class LinkedList:
 
 def main():
     # read data from stdin using input() and create polynomial p
-    file_name = input()
+    terms = int(input())
     p = LinkedList()
     q = LinkedList()
-    """line = f.readline()
-    while line != '':
-        line = f.readline()
-        line = line.strip()
+    for term in range(terms):
+        line = input()
         nums = []
         l = 0
         while l < len(line):
@@ -213,10 +211,11 @@ def main():
             l += 1
         if len(nums) > 1:
             p.insert_term(nums[0], nums[1])
+    input()
     # read data from stdin using input() and create polynomial q
-    line = f.readline()
-    for line in f:
-        line = line.strip()
+    terms = int(input())
+    for term in range(terms):
+        line = input()
         nums = []
         l = 0
         while l < len(line):
@@ -235,7 +234,6 @@ def main():
     # get product of p and q as a new linked list and print product
     prod = p.mult(q)
     print(prod)
-    """
 
 
 if __name__ == "__main__":
