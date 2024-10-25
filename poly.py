@@ -197,45 +197,45 @@ def main():
     file_name = input()
     p = LinkedList()
     q = LinkedList()
-    with open(file_name) as f:
+    """line = f.readline()
+    while line != '':
         line = f.readline()
-        while line != '':
-            line = f.readline()
-            line = line.strip()
-            nums = []
-            l = 0
-            while l < len(line):
-                if line[l] == '-':
-                    if l + 1 < len(line):
-                        nums.append(int(line[l:l+2]))
-                        l += 1
-                elif line[l].isdigit():
-                    nums.append(int(line[l]))
-                l += 1
-            if len(nums) > 1:
-                p.insert_term(nums[0], nums[1])
-        # read data from stdin using input() and create polynomial q
-        line = f.readline()
-        for line in f:
-            line = line.strip()
-            nums = []
-            l = 0
-            while l < len(line):
-                if line[l] == '-':
-                    if l + 1 < len(line):
-                        nums.append(int(line[l:l+2]))
-                        l += 1
-                elif line[l].isdigit():
-                    nums.append(int(line[l]))
-                l += 1
-            if len(nums) > 1:
-                q.insert_term(nums[0], nums[1])
+        line = line.strip()
+        nums = []
+        l = 0
+        while l < len(line):
+            if line[l] == '-':
+                if l + 1 < len(line):
+                    nums.append(int(line[l:l+2]))
+                    l += 1
+            elif line[l].isdigit():
+                nums.append(int(line[l]))
+            l += 1
+        if len(nums) > 1:
+            p.insert_term(nums[0], nums[1])
+    # read data from stdin using input() and create polynomial q
+    line = f.readline()
+    for line in f:
+        line = line.strip()
+        nums = []
+        l = 0
+        while l < len(line):
+            if line[l] == '-':
+                if l + 1 < len(line):
+                    nums.append(int(line[l:l+2]))
+                    l += 1
+            elif line[l].isdigit():
+                nums.append(int(line[l]))
+            l += 1
+        if len(nums) > 1:
+            q.insert_term(nums[0], nums[1])
     # get sum of p and q as a new linked list and print sum
     sum = p.add(q)
     print(sum)
     # get product of p and q as a new linked list and print product
     prod = p.mult(q)
     print(prod)
+    """
 
 
 if __name__ == "__main__":
