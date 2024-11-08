@@ -1,64 +1,22 @@
-# the following code was modified from pythonds3 reading
-# 3.21. Implementing an Unordered List: Linked Lists
+def count_largest_group(n):
+    hashtable = []
+    for i in range(n):
+        hashtable.append([])
+    for num in range(n):
+        strum = str(num)
+        summ = 0
+        for c in strum:
+            summ += int(c)
+        hashtable[summ%n].append(num)
+    groups = 0
+    highest = 0
+    for g in hashtable:
+        if len(g) > highest:
+            groups = 1
+            highest = len(g)
+        elif len(g) == highest:
+            groups += 1
+    print(hashtable)
+    return groups
 
-class Node:
-    """A node of a linked list"""
-    def __init__(self, node_data, next=None):
-        self.data = node_data
-        self.next = next
-
-    def __str__(self):
-        return str(self.data)
-
-class LinkedList:
-    def __init__(self):
-        self.head = None
-        
-    def add(self, item):
-        temp = Node(item)
-        if self.head is None:
-            self.head = temp
-            return
-        temp.next = self.head
-        self.head = temp
-
-    # TODO: implement this method        
-    def move_end_to_start(self):
-        if self.head is None:
-            return
-        if self.head.next is None:
-            return
-        super_previous = None
-        previous = self.head
-        current = self.head.next
-        if current.next is not None:
-            super_previous = self.head
-            previous = previous.next
-            current = current.next
-        else:
-            previous.next = None
-            current.next = previous
-            self.head = current
-        while current is not None:
-            super_previous = super_previous.next
-            previous = previous.next
-            current = current.next
-        super_previous.next = None
-        previous.next = self.head
-        self.head = previous
-    
-    def __str__(self):
-        nodes_str = []
-        current = self.head
-        while current is not None:
-            nodes_str.append(str(current))
-            current = current.next
-        nodes_str.append("None")
-        return " -> ".join(nodes_str)
-
-linked = LinkedList()
-for i in range(10):
-    linked.add(i)
-print(linked)
-linked.move_end_to_start()
-print(linked)
+print(count_largest_group(13))
