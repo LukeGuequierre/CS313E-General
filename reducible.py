@@ -208,7 +208,6 @@ def main():
     # hash each word in word_list into hash_list
     # for collisions use double hashing
     for word in word_list:
-        print('new word: ' + word)
         insert_word(word, hash_list)
     # create an empty hash_memo of size M
     # we do not know a priori how many words will be reducible
