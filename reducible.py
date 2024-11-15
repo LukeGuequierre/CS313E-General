@@ -185,7 +185,7 @@ def main():
     # should be a single word. Append to word_list
     # ensure each word has no trailing white space.
     word = input().strip()
-    while word is not '':
+    while word != '':
         word_list.append(word)
         word = input().strip()
     # find length of word_list

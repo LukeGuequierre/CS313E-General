@@ -1,3 +1,4 @@
+""" Why does lil bro want a docrtrisng"""
 import unittest
 import sys
 from reducible import (
@@ -198,7 +199,8 @@ class TestFindWord(unittest.TestCase):
         self.assertTrue(find_word("stear", hash_table))  # Should return True
 
     def test_find_word_10(self):
-        """Test find_word that requires 3 collisions and wraps around before finding it doesn't exist"""
+        """Test find_word that requires 3 
+        collisions and wraps around before finding it doesn't exist"""
         hash_table = ["earst", "rates", "", "", "stear", "stare", ""]
         self.assertFalse(find_word("aster", hash_table))  # Should return False
 
