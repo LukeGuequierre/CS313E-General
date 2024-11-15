@@ -1,22 +1,5 @@
-def count_largest_group(n):
-    hashtable = []
-    for i in range(n):
-        hashtable.append([])
-    for num in range(n):
-        strum = str(num)
-        summ = 0
-        for c in strum:
-            summ += int(c)
-        hashtable[summ%n].append(num)
-    groups = 0
-    highest = 0
-    for g in hashtable:
-        if len(g) > highest:
-            groups = 1
-            highest = len(g)
-        elif len(g) == highest:
-            groups += 1
-    print(hashtable)
-    return groups
-
-print(count_largest_group(13))
+word = ''
+word = word.strip()
+print(word == '')
+hash_list = [''] * 5
+print(hash_list)
