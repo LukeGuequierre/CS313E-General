@@ -187,7 +187,10 @@ def main():
     word = input().strip()
     while word != '':
         word_list.append(word)
-        word = input().strip()
+        try:
+            word = input().strip()
+        except EOFError:
+            word = ''
     # find length of word_list
     wl_length = len(word_list)
     # determine prime number N that is greater than twice
